@@ -22,7 +22,6 @@ set<pair<int, int>>st;
     int find(int number) {
        
        auto it = st.lower_bound({number, 0}); // Find the first occurrence of 'number'
-        cout<<it->first<<" "<<it->second;
         if (it != st.end() && it->first == number) {
             return it->second;
         }
