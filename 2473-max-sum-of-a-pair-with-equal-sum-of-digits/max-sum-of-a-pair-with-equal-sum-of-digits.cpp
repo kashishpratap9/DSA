@@ -29,10 +29,7 @@ int digitsum(int num){
              }
         }
 
-        for(auto&i:mp){
-            cout<<i.first<<" "<<i.second;
-            cout<<endl;
-        }
+       
 
         return maxi;
 
