@@ -50,20 +50,12 @@ ListNode* getMiddle(ListNode*&head){
         ListNode* newnode=new ListNode(temp1->val);
         newnode->next=temp->next;
         temp->next=newnode;
-        
+
         temp=temp->next->next;
         temp1= temp1->next;
        }
 
   
-
- temp= head;
-       while( temp!= NULL){
-        cout<<temp->val<<" ";
-        temp= temp->next;
-       }
-
-   
 
         
     }
