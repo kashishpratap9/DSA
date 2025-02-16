@@ -38,24 +38,27 @@ void Dijkistra(int src, vector<int>&result, unordered_map<int, vector<pair<int, 
         vector<int>result2(edges.size(), INT_MAX);
         Dijkistra(node1, result1, adj);
         Dijkistra(node2, result2, adj);
-     int minDistance = INT_MAX;
-    int closestNode = -1;
-    
-    // Check for the closest node where both node1 and node2 can reach
-    for (int i = 0; i < edges.size(); ++i) {
-        if (result1[i] != INT_MAX && result2[i] != INT_MAX) {
-            int maxDist = max(result1[i], result2[i]);
-            
-            if (maxDist < minDistance) {
-                minDistance = maxDist;
-                closestNode = i;
-            } else if (maxDist == minDistance && i < closestNode) {
-                closestNode = i;  // To ensure smallest index node in case of tie
+        int mindis = INT_MAX;
+        int closestNode = -1;
+        for( int i=0;i<edges.size();i++){
+            if(result1[i]!=INT_MAX&& result2[i]!=INT_MAX){
+                int maxi= max(result1[i],result2[i]);
+                cout<<i;
+                
+                  if(maxi<mindis){
+                    mindis=maxi;
+                    closestNode=i;
+                }
+                else if(maxi==mindis && i< closestNode){
+                     closestNode=i;
+                }
             }
+
         }
-    }
+
+        return  closestNode;
     
-    return closestNode;
+   
 
     }
 };
