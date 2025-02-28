@@ -22,7 +22,7 @@ public:
             }
 
         if(mp.size()==k){
-            cout<<sum<<" ";
+            // cout<<sum<<" ";
             maxsum=max(maxsum, sum);
         }
              r++;
