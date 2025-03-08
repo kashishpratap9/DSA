@@ -10,11 +10,7 @@ public:
                 count_1++;
              }
         }
-        vector<int>new_arr(2*n);
-        for( int i=0;i<2*n;i++){
-            new_arr[i]=nums[i%n];
-        }
-
+        
         // for( int i=0;i<2*n;i++){
         //      cout<<new_arr[i]<<' ';
         // }
