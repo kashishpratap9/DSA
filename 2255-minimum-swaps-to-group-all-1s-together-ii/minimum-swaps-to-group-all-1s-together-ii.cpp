@@ -1,6 +1,8 @@
 class Solution {
 public:
     int minSwaps(vector<int>& nums) {
+
+        //for window size
         int n= nums.size();
         int count_1=0;
         for( int i=0;i<n;i++){
@@ -21,12 +23,12 @@ public:
         int maxi=INT_MIN;
         int len=0;
         while(r<2*n){
-            if(new_arr[r]==1){
+            if(nums[r%n]==1){
                 len++;
             }
 
             if( r-l+1>count_1){
-                    if(new_arr[l]==1 && len>0){
+                    if(nums[l%n]==1 && len>0){
                         len--;
                     }
                 l++;
