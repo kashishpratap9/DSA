@@ -11,29 +11,38 @@
  */
 class Solution {
 public:
-void dfslargest(TreeNode*&root, int level, map<int,int>&mp){
+
+int height(TreeNode*&root){
+    if(!root){
+        return 0;
+    }
+    int left=height(root->left);
+    int right= height(root->right);
+    return 1+ max( left, right);
+}
+void dfslargest(TreeNode*&root, int level,vector<int>&ans){
     if(!root){
         return;
     }
-    if(mp.find(level)==mp.end()){
-        mp[level]=root->val;
+    if(ans[level]==-1){
+        ans[level]=root->val;
         // cout<<root->val;
     }else{
-        mp[level]=max(mp[level], root->val);
+        ans[level]=max(ans[level], root->val);
     }
     level+=1;
-    dfslargest(root->left, level,mp);
-    dfslargest(root->right, level,mp);
+    dfslargest(root->left, level,ans);
+    dfslargest(root->right, level,ans);
 }
     vector<int> largestValues(TreeNode* root) {
         int level=0;
-        vector<int>ans;
-        map<int , int>mp;
-        dfslargest(root, level, mp);
-        for( auto i:mp){
-            ans.push_back(i.second);
-        }
-    
+        int high=height(root);
+        vector<int>ans(high,-1);
+        // map<int , int>mp;
+        dfslargest(root, level, ans);
+        // for( auto i:mp){
+        //     ans.push_back(i.second);
+        // }
         return ans;
         
     }
