@@ -9,7 +9,7 @@ public:
                 ans.push_back(address[i]);
                 ans.push_back(']');
             }
-            else if(isdigit(address[i])){
+            else{
                 ans+=address[i];
             }
          }
