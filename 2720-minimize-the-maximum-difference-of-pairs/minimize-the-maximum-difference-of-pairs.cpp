@@ -1,6 +1,7 @@
 class Solution {
 public:
-bool isValid( vector<int>&nums, int p , int mid){
+  
+    bool isValid( vector<int>&nums, int p , int mid){
     int n= nums.size();
     int cn=0;
     for( int i=0;i<nums.size()-1;i++){
