@@ -1,67 +1,66 @@
 class Solution {
 public:
 
-bool isPossible(int val, int i, int j , vector<vector<char>>& board){
+bool isSafe(int i , int j, char ch ,vector<vector<char>>& board){
     int row=0;
     int col=0;
-    int n=board.size();
-    while(row<n){
-       if( board[row][j]==val+'0'){
-         return false;
-       }
-       row++;
+    int n = board.size();
+    while( row< board.size()){
+        if( board[row][j]==ch){
+            return false;
+        }
+        row++;
     }
 
-    while(col<n){
-         if( board[i][col]==val+'0'){
+     while( col< board.size()){
+        if( board[i][col]==ch){
             return false;
-         }
-         col++;
+        }col++;
     }
-   
- int startRow = (i / 3) * 3, startCol = (j / 3) * 3;
-    for( int r=startRow;r<startRow+3;r++){
-        for( int c=startCol ; c<startCol+3;c++){
-            if( board[r][c]==val+'0'){
+
+    int sr=  (i/3)*3;
+    int sc= (j/3)*3;
+    for( int i1=sr;i1<sr+3;i1++){
+        for( int j1=sc;j1<sc+3;j1++){
+            if( board[i1][j1]==ch){
                 return false;
             }
+
         }
+
     }
 
     return true;
-    
+
+
+
 }
 
 
-
-bool helper(vector<vector<char>>& board){
-    //basecase
-    for( int i=0;i<board.size();i++){
-         for( int j=0;j<board[0].size();j++){
-            if( board[i][j]=='.'){
-                    for( int val=1;val<=9;val++){
-                        if(isPossible(val, i, j, board)){
-                            board[i][j]=val+'0';
-                            if(helper(board)){
-                                return true;
-                            }
+bool solve(vector<vector<char>>& board){
+     for( int i=0;i<board.size();i++){
+             for( int j=0;j<board[0].size(); j++){
+                 if( board[i][j]=='.'){
+                    for(char ch ='1';ch<='9';ch++){
+                        if( isSafe(i, j, ch, board)){
+                            board[i][j]=ch;
+                            if(solve(board))return true;
                             board[i][j]='.';
-                         }
-                     }
-                       return false;
 
-                }
-         }
-    }
+                            
+                        }
+                    }
+                    return  false;
 
-    return true;
-      
-  
-    
+                 }
+             }
+        }
+        return true;
 }
+
     void solveSudoku(vector<vector<char>>& board) {
-                     
-         helper(board);
+        solve(board);
+       
         
     }
 };
