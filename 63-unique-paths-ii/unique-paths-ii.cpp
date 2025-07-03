@@ -5,7 +5,7 @@ int Unique(int i, int j ,int m, int n,  vector<vector<int>>&grid, vector<vector<
         return 0;
     }
 
-    if(i==m-1 && j==n-1 ){
+    if(i==m-1 && j==n-1  &&  grid[i][j]!=1){
         return 1;
     }
     if( dp[i][j] != -1){
